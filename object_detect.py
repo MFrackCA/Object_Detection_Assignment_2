@@ -6,30 +6,29 @@ def main():
     # capture frames from a video
     cap = cv2.VideoCapture('video.mp4')
     
-    # Trained XML classifiers describe some features of some object we want to detect
+    # Trained XML classifiers 
     car_cascade = cv2.CascadeClassifier('cars.xml')
     pedestrian_cascade = cv2.CascadeClassifier('pedestrian.xml')
     bus_cascade = cv2.CascadeClassifier('bus.xml')
 
-    print("Generated classification objects through online XML files")
-    
     # Create counter variables
     total_car_count = 0
     total_pedestrian_count = 0
     total_bus_count = 0
     num_frames = 0
-    total_processing_time = 0.0  # To keep track of total processing time
-    fastest_frame_time = float('inf')  # Initialize with a large value
+    total_processing_time = 0.0  
+    fastest_frame_time = float('inf')  
     slowest_frame_time = 0.0
 
-    # Process frames until the video reaches its end
+    # Process frames until the video ends
     while True:
         ret, frames = cap.read()
         
-        # Check if we've reached the end of the video
+        # Break loop if video reaches end
         if not ret:
             break
 
+        # Frame counter
         num_frames += 1
 
         gray = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
