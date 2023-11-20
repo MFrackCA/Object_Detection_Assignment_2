@@ -3,8 +3,9 @@ import numpy as np
 import time
 
 def main():
-    # capture frames from a video
-    cap = cv2.VideoCapture('video.mp4')
+
+    # Get all frames from video
+    frames = cv2.VideoCapture('video.mp4')
     
     # Trained XML classifiers 
     car_cascade = cv2.CascadeClassifier('cars.xml')
@@ -22,16 +23,18 @@ def main():
 
     # Process frames until the video ends
     while True:
-        ret, frames = cap.read()
+
+        # get single frame from frames
+        frame_exist, frame = frames.read()
         
-        # Break loop if video reaches end
-        if not ret:
+        # Break loop no more frames are returned from frames.read()
+        if not frame_exist:
             break
 
         # Frame counter
         num_frames += 1
 
-        gray = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
         # Start timer for detecting objects in frame
         start = time.time()
