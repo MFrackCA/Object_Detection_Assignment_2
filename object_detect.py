@@ -36,7 +36,7 @@ def main():
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
-        # Start timer for detecting objects in frame
+        # Start timer 
         start = time.time()
 
         # Detect Objects
@@ -44,11 +44,11 @@ def main():
         pedestrian = pedestrian_cascade.detectMultiScale(gray, 1.1, 1)
         bus = bus_cascade.detectMultiScale(gray, 1.1, 1)
 
-        # Finish timer for detecting objects in frame       
+        # Finish timer    
         end = time.time()
         
         processing_time = end - start
-        total_processing_time += processing_time  # Add the processing time for this frame
+        total_processing_time += processing_time  
 
         # Update fastest and slowest frame times
         if processing_time < fastest_frame_time:
