@@ -81,9 +81,6 @@ def main():
 
         # Total counts of objecst per frame
         print("Frame {} - Cars detected: {}, Pedestrians detected: {}, Buses detected: {}".format(num_frames, car_count, pedestrian_count, bus_count))
-    
-        if cv2.waitKey(33) == 27:
-            break
 
     cv2.destroyAllWindows()
 
